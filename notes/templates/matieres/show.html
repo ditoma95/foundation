@@ -1,0 +1,15 @@
+{% extends "notes/index.html" %}
+{% block content %}
+<ul class="vertical menu accordion-menu" data-accordion-menu>
+    <li>
+      <a href="#">Liste des matieres</a>
+        <ul class="menu vertical nested">
+            <div>
+                <h1>{{ uneMatiere.nom }}</h1>
+                <h1>{{ uneMatiere.enseignant }}</h1>
+            </div>
+        </ul>
+    </li>
+</ul>
+
+{% endblock %}

@@ -1,0 +1,106 @@
+{% extends "notes/index.html" %}
+  
+{% block content %}
+
+<ul class="vertical menu accordion-menu" data-accordion-menu>
+    <li>
+      <a href="#">Liste des Matieres</a>
+        <ul class="menu vertical nested">
+            <div>
+                <div>
+                    <!-- component -->
+                    <section>
+                    <div >
+                        <div >
+                        </div>
+
+                        <div>
+                            
+                            <form action="">
+                                <div class="top-bar-right">
+                                    <ul class="menu">
+                                        <li><input type="search" name="item-name" placeholder="Search"></li>
+                                        <li><button type="button" class="button">Search</button></li>
+                                    </ul>
+                                </div>
+                            </form>
+                                
+                        </div>
+                    </div>
+
+                    <div >
+                        <div >
+                            <div >
+                                <div >
+                                    <table>
+                                        <thead >
+                                            <tr>
+                                                <th scope="col" >
+                                                    <button>
+                                                        <span>Noms des matieres</span>
+                                                    </button>
+                                                </th>
+
+                                                <th scope="col" >
+                                                    Nom Enseignant                                
+                                                </th>
+                                                
+
+                                                <th scope="col" >
+                                                    Details matieres                                
+                                                </th>
+                                                <th scope="col">
+                                                    Pdf notes/Matiere                               
+                                                </th>
+                                                
+                                                
+
+                                                
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+
+
+                                            {% for metes in lesmatiers %}
+                                            <tr>
+                                                <td >
+                                                    <div>
+                                                        <h2 >{{ metes.nom }}</h2>
+                                                    </div>
+                                                </td>
+
+                                                <td >
+                                                    <div>
+                                                        <h2>{{ metes.enseignant.nom }}</h2>
+                                                    </div>
+                                                </td>
+
+
+                                                <td>
+                                                    <a href="{% url 'notes:matiere' metes.id %}">
+                                                        
+                                                    </a>
+                                                </td>
+
+                                                <td >
+                                                    <a href="{% url 'notes:notesEleves' metes.id %}">
+                                                                                                
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </section>
+                </div>
+            </div>
+        </ul>
+    </li>
+</ul> 
+{% endblock %}

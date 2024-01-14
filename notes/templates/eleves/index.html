@@ -1,0 +1,53 @@
+{% extends "notes/index.html" %}
+  
+{% block content %}
+    <h1>Listes des utilisateurs</h1>
+    <ul class="vertical menu accordion-menu" data-accordion-menu>
+        <li>
+          <a href="#">Liste des eleves</a>
+          <ul class="menu vertical nested">
+            <table>
+                <thead>
+                    <tr>
+                        <th width="150">Nom</th>
+                        <th width="150">Prenom</th>
+                        <th width="150">Sexe</th>
+                        <th width="150">Date naissance</th>
+                        <th width="150">Details eleve</th>
+                        <th width="150">Moyenne</th>   
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for elev in lesEleves %}
+                        <tr>
+                            <td>
+                                {{ elev.nom }}
+                            </td>
+                            <td >
+                                {{ elev.prenom }}
+                            </td>
+                            <td >
+                                {{ elev.sexe }}
+                            </td>
+            
+                            <td >
+                                {{ elev.date_naissance }}
+                        </td>
+            
+                        <td>
+                            <a href="{% url 'notes:eleve' elev.id %}">show</a>
+                        </td>
+            
+                        <td>
+                            <a href="{% url 'notes:notesSynthese' elev.id %}">Moy</a>
+                        </td>
+                        </tr>
+                    {% endfor %}
+                   
+                </tbody>
+            </table>
+          </ul>
+        </li>
+      </ul>
+    
+{% endblock %}

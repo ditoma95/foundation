@@ -1,0 +1,21 @@
+{% extends "notes/index.html" %}
+{% block content %}
+<section >
+    <div >
+        <div >
+            <div >
+                <h2 >Ajouter une note</h2>
+            </div>
+            <hr>
+            <form action="" method="post">
+                {% csrf_token %}
+                <div >
+                    {{ form.valeur.label_tag }}
+                    {{ form.valeur }}
+                </div>
+                <button class="submit success button">Enregistrer</button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

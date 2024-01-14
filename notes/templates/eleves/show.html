@@ -1,0 +1,59 @@
+{% extends "notes/index.html" %}
+{% block content %}
+
+    <div>
+        <div >
+            <a href="{% url 'notes:eleves' %}">retour</a>
+        </div>
+        <div >
+            <div >
+                <img src="" alt="">
+            </div>
+
+            <div>
+                <h1>{{ unEleve.nom }}</h1>
+                <h1>{{ unEleve.sexe }}</h1>
+                <h1>{{ unEleve.prenom }}</h1>
+                <h1>{{ unEleve.date_naissance }}</h1>
+                <h1>{{ unEleve.niveau}}</h1>
+                <div >
+                    {% for matis in listmatires %}
+                        <div>
+                            <div >
+                                <div>
+                                    {{ matis.0}}
+                                    <hr>
+                                    <h4>Moyenne : 
+                                        {{ matis.1}}
+                                    </h4>
+                                </div>
+                                <hr>
+                                <div>
+                                    <ul>
+                                        {% for nt in matis.0.note_set.all %}
+                                        <li>{{ nt}}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                <hr>
+                            </div>
+                            <div>
+                                <a href="{% url 'notes:add_notes' unEleve.id  matis.0.id %}" >ajouter une note</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                    <div >
+                        <h1> Moy : 
+                            {{ moyenne_generale }}
+                        </h1>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

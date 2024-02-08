@@ -1,20 +1,24 @@
 {% extends "notes/index.html" %}
 {% block content %}
-<section >
-    <div >
-        <div >
-            <div >
-                <h2 >Ajouter une note</h2>
-            </div>
-            <hr>
-            <form action="" method="post">
-                {% csrf_token %}
-                <div >
-                    {{ form.valeur.label_tag }}
-                    {{ form.valeur }}
+<section>
+    <div class="grid-container">
+        <div class="grid-x grid-padding-x">
+            <div class="medium6 cell">
+                <div class="callout">
+                    <h2>Ajouter une note</h2>
+                    <hr>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="grid-x grid-padding-x">
+                            <div class="medium-12 cell">
+                                {{ form.valeur.label_tag }}
+                                {{ form.valeur }}
+                            </div>
+                        </div>
+                        <button class="button success expanded">Enregistrer</button>
+                    </form>
                 </div>
-                <button class="submit success button">Enregistrer</button>
-            </form>
+            </div>
         </div>
     </div>
 </section>

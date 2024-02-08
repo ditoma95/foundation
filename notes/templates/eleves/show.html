@@ -1,6 +1,7 @@
 {% extends "notes/index.html" %}
 {% block content %}
 
+
     <div>
         <div >
             <a href="{% url 'notes:eleves' %}">retour</a>
@@ -10,50 +11,66 @@
                 <img src="" alt="">
             </div>
 
-            <div>
-                <h1>{{ unEleve.nom }}</h1>
-                <h1>{{ unEleve.sexe }}</h1>
-                <h1>{{ unEleve.prenom }}</h1>
-                <h1>{{ unEleve.date_naissance }}</h1>
-                <h1>{{ unEleve.niveau}}</h1>
-                <div >
+            <div class="row">
+                <div class="columns">
+                  <h2>Details</h2>
+                  <table class="stack">
+                    <thead>
+                      <tr>
+                        <th>Nom</th>
+                        <th>Sexe</th>
+                        <th>Prenom</th>
+                        <th>Date Naissance</th>
+                        <th>Niveau</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                          <td>{{ unEleve.nom }}</td>
+                          <td>{{ unEleve.sexe }}</td>
+                          <td>{{ unEleve.prenom }}</td>
+                          <td>{{ unEleve.date_naissance }}</td>
+                          <td>{{ unEleve.niveau}}</td>
+                        </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              
+
+              <div class="grid-container">
+                <div class="grid-x grid-padding-x">
                     {% for matis in listmatires %}
-                        <div>
-                            <div >
-                                <div>
-                                    {{ matis.0}}
-                                    <hr>
-                                    <h4>Moyenne : 
-                                        {{ matis.1}}
-                                    </h4>
-                                </div>
+                        <div class="medium-6 large-4 cell">
+                            <div class="callout">
+                                <h3>{{ matis.0 }}</h3>
                                 <hr>
-                                <div>
-                                    <ul>
-                                        {% for nt in matis.0.note_set.all %}
-                                        <li>{{ nt}}</li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
-                                <hr>
+                                <h4>Moyenne : {{ matis.1 }}</h4>
+                            </div>
+                            <div>
+                                <ul>
+                                    {% for nt in matis.0.note_set.all %}
+                                    <li>{{ nt }}</li>
+                                    {% endfor %}
+                                </ul>
                             </div>
                             <div>
                                 <a href="{% url 'notes:add_notes' unEleve.id  matis.0.id %}" >ajouter une note</a>
                             </div>
                         </div>
                     {% endfor %}
-
-                    <div >
-                        <h1> Moy : 
-                            {{ moyenne_generale }}
-                        </h1>
+        
+                    <div class="medium-6 large-4 cell">
+                        <h1> Moy : {{ moyenne_generale }}</h1>
                     </div>
-                    
                 </div>
-                
             </div>
+               
         </div>
     </div>
 
 
 {% endblock %}
+
+
+
